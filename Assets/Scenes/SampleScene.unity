@@ -541,6 +541,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 484981638957283340, guid: 458442360dc4f9e4496d49d605792aac, type: 3}
+      propertyPath: m_Text
+      value: "GameOver\nIt's sunny today!\r"
+      objectReference: {fileID: 0}
     - target: {fileID: 4212613057927803738, guid: 458442360dc4f9e4496d49d605792aac, type: 3}
       propertyPath: m_Pivot.x
       value: 0
