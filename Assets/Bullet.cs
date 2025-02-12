@@ -12,6 +12,7 @@ public class Bullet : MonoBehaviour
 
     void OnBecameInvisible()
     {
+
         // 当子弹离开屏幕时销毁
         Destroy(gameObject);
     }
@@ -20,8 +21,11 @@ public class Bullet : MonoBehaviour
         // 确保碰撞的是敌人
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            Access access = FindFirstObjectByType<Access>();
+            access.score();
             Destroy(collision.gameObject);  // 销毁敌人
             Destroy(gameObject);            // 销毁子弹
+            
         }
     }
 }
