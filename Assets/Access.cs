@@ -5,6 +5,7 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 using System.Threading.Tasks;
 using System;
+using System.IO;
 
 public class Access : MonoBehaviour
 {
@@ -61,9 +62,31 @@ public class Access : MonoBehaviour
     }
     public void score()
     {
+        SaveScoreToJson();
         var result = collection.Find("{PlayerId:0}").FirstOrDefault();
         var filter = Builders<BsonDocument>.Filter.Eq("PlayerId", 0);
         var update = Builders<BsonDocument>.Update.Set("Score", 100);
         collection.UpdateOne(filter, update);
     }
+    public void SaveScoreToJson()
+    {
+        ScoreData scoreData = new ScoreData { playerScore = 0 };
+        string jsonData = JsonUtility.ToJson(scoreData, true);
+        string filePath = Path.Combine(Application.dataPath, "score.json");
+        File.WriteAllText(filePath, jsonData);
+
+       
+        
+        
+    }
 }
+
+
+// Class to represent the score data structure
+[System.Serializable]
+public class ScoreData
+{
+    public int playerScore; // Field for storing the player's score
+}
+
+
